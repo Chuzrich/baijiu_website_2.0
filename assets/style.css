@@ -128,7 +128,7 @@ body {
 /* 圖片全局控制，避免圖片太大 */
 img {
   max-width: 20%;
-  height: auto;
+  height: 20%;
   display: block;
   margin: 0 auto;
 }
