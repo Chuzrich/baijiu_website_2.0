@@ -1,2 +1,84 @@
-body {font-family: "Noto Serif TC", serif; background: #f9f5ee; color: #333; line-height: 1.8; margin: 0; padding: 0;}
-img {max-width:100%; height:auto; display:block; margin:0 auto;}
+/* 基本重置與設定 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Noto Serif TC", serif;
+  background-color: #e0f7fa;  /* 冷色調背景 */
+  color: #333;
+  line-height: 1.8;
+}
+
+/* Header 導覽列 */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #607d8b; /* 藍灰色 */
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.logo img {
+  height: 60px;
+  width: auto;
+}
+.main-nav a {
+  margin-left: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.main-nav a:hover {
+  color: #90caf9;
+}
+
+/* 首頁內容 */
+.home-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+.hero-section {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: auto;
+}
+.hero-mom {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 20px auto;
+}
+
+/* 其他頁面內容 */
+.page-content {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  background-color: #607d8b;
+  padding: 10px;
+  margin-top: 40px;
+  color: #fff;
+}
+
+/* 控制圖片大小 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
