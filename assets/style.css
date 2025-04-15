@@ -100,3 +100,35 @@ body {
   color: #a52a2a;
 }
 .chapter-list {
+  list-style: none;
+  padding: 0;
+}
+.chapter-list li {
+  margin-bottom: 10px;
+}
+.chapter-list a {
+  text-decoration: none;
+  color: #333;
+}
+.chapter-list a:hover {
+  color: #a52a2a;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  background: #fff;
+  border-top: 2px solid #e2d8c3;
+  padding: 15px;
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* 圖片全局控制，避免圖片太大 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
