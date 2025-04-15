@@ -3,10 +3,35 @@ body {
   font-family: "Noto Serif TC", serif;
   background-color: #f5f0e1;
   color: #333;
+  margin: 0;
+  padding: 0;
 }
-
+.container {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
 .novel-content {
+  flex: 3;
   white-space: pre-wrap;
   line-height: 2;
   font-size: 1.2em;
+  padding-right: 40px;
+}
+.sidebar {
+  flex: 1;
+  position: sticky;
+  top: 20px;
+  background: #f0e5d8;
+  padding: 20px;
+  height: fit-content;
+}
+footer {
+  text-align: center;
+  font-size: 0.9em;
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #e2d8c3;
 }
