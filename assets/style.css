@@ -35,3 +35,9 @@ footer {
   padding: 20px;
   background-color: #e2d8c3;
 }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
