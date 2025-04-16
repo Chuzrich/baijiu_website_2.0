@@ -206,3 +206,47 @@ img {
   box-shadow: 0 1px 5px rgba(0,0,0,0.08);
   font-size: 0.95em;
 }
+
+:root {
+  --bg-color: #e0f7fa;
+  --text-color: #333;
+  --header-bg: #607d8b;
+  --footer-bg: #607d8b;
+  --link-hover: #90caf9;
+}
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+.site-header, .site-footer {
+  background: var(--header-bg);
+}
+.main-nav a:hover {
+  color: var(--link-hover);
+}
+.dark-mode {
+  --bg-color: #121212;
+  --text-color: #f1f1f1;
+  --header-bg: #1e1e1e;
+  --footer-bg: #1e1e1e;
+  --link-hover: #64b5f6;
+}
+.mode-toggle {
+  position: fixed;
+  top: 12px;
+  right: 20px;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 4px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 999;
+  font-size: 0.9em;
+}
+@media (max-width: 768px) {
+  .mode-toggle {
+    top: 10px;
+    right: 10px;
+    font-size: 0.8em;
+  }
+}
