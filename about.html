@@ -1,22 +1,47 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head><meta charset="UTF-8"><title>關於本站 - 百九小說網站</title><link rel="stylesheet" href="assets/style.css"></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>關於 - 百九小說網站</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
 <body>
-<header class="site-header">
-  <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></div>
-  <nav class="main-nav">
-    <a href="index.html">首頁</a><a href="about.html">關於</a><a href="contact.html">聯絡</a>
-  </nav>
-</header>
-<main class="page-content">
-  <h2>關於本站</h2>
-  <p>「百九小說網站」是一個專屬於創作者百九的小說發布空間，以哲學、旅程與人性思辨為核心。</p>
-  <p>網站名稱源自於筆名「百九」，而「珍視之主」則象徵著對母親的思念與創作的初衷。</p>
-  <h3>伊龍MOM是誰？</h3>
-  <p>伊龍MOM是一隻大隻但笨拙的龍，能力平平卻充滿幹勁。他渴望有一天能成為令人尊敬的巨龍，就像百九自己一樣。</p>
-  <img src="assets/images/ilongmom.png" alt="伊龍MOM">
-</main>
-<footer class="site-footer"><p>珍視每一位來訪者的閱讀與留言。</p></footer>
+  <header class="site-header">
+    <div class="logo">
+      <a href="index.html"><img src="assets/images/logo.png" alt="Logo" /></a>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html">首頁</a>
+      <a href="about.html">關於</a>
+      <a href="contact.html">聯絡</a>
+    </nav>
+  </header>
+  <main class="page-content">
+    <h2>關於本站</h2>
+    <p>百九小說網站是為了收藏與連載哲學與幻想交織的作品而存在的空間。</p>
+    <h3>伊龍MOM是誰？</h3>
+    <p>伊龍MOM是百九網站的守護龍，一隻努力想成為帥氣龍的可愛龍龍。</p>
+    <p>他的名字來自 Elon Musk 的諧音，也象徵著「第一名」與對母親的思念。</p>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; 2025 百九小說網站</p>
+  </footer>
+
+<script>
+  const toggle = document.createElement("button");
+  toggle.innerText = "🌗 切換模式";
+  toggle.className = "mode-toggle";
+  toggle.onclick = function() {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+  };
+  document.body.appendChild(toggle);
+  if (localStorage.getItem("dark-mode") === "true") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
+
 </body>
 </html>

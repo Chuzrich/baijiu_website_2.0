@@ -23,15 +23,42 @@
       <img class="hero-mom" src="assets/images/ilongmom.png" alt="伊龍MOM" />
       <h1>百九小說網站</h1>
       <p>這是一個讓故事慢慢長大的地方。</p>
-      <p>伊龍MOM是這個世界的守護龍，笨拙、努力，期望有朝一日成為一隻帥氣的龍。</p>
+      <p>伊龍MOM是這個世界的守護龍，笨拙、努力，超級想成為一隻帥氣的龍。</p>
       <div class="chapter-links">
         <a href="novels/fugou/01.html">閱讀《佛國紀元》</a>
       </div>
     </section>
+<section class="update-section">
+  <h2>📚 最新章節更新</h2>
+  <ul>
+    <li><a href="novels/fugou/50.html">佛國紀元 第50章</a></li>
+    <li><a href="novels/fugou/49.html">佛國紀元 第49章</a></li>
+    <li><a href="novels/fugou/48.html">佛國紀元 第48章</a></li>
+    <li><a href="novels/pure/10.html">純陽之旅 第10章</a></li>
+    <li><a href="novels/pure/9.html">純陽之旅 第9章</a></li>
+    <li><a href="novels/pure/8.html">純陽之旅 第8章</a></li>
+  </ul>
+</section>
+
   </main>
   <footer class="site-footer">
     <p>聽說龍都會噴火，我目前先會跌倒。</p>
     <p>&copy; 2025 百九小說網站</p>
   </footer>
+
+<script>
+  const toggle = document.createElement("button");
+  toggle.innerText = "🌗 切換模式";
+  toggle.className = "mode-toggle";
+  toggle.onclick = function() {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+  };
+  document.body.appendChild(toggle);
+  if (localStorage.getItem("dark-mode") === "true") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
+
 </body>
 </html>
