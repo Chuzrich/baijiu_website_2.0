@@ -17,6 +17,25 @@
   <p>伊龍MOM是一隻大隻但笨拙的龍，能力平平卻充滿幹勁。他渴望有一天能成為令人尊敬的巨龍，就像百九自己一樣。</p>
   <img src="assets/images/ilongmom.png" alt="伊龍MOM">
 </main>
+  </footer>
+
+<script>
+  const toggle = document.createElement("button");
+  toggle.innerText = "🌗 切換模式";
+  toggle.className = "mode-toggle";
+  toggle.onclick = function() {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+  };
+  document.body.appendChild(toggle);
+  if (localStorage.getItem("dark-mode") === "true") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
+
+</body>
+</html>
+
 <footer class="site-footer"><p>珍視每一位來訪者的閱讀與留言。</p></footer>
 </body>
 </html>
