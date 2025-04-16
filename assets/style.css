@@ -170,3 +170,39 @@ img {
 .sidebar a:hover {
   color: #0288d1;
 }
+
+
+/* === v4.3 手機不橫向捲動 + 字體放大 + 章節欄優化 === */
+.page-container {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+@media (max-width: 768px) {
+  .page-container {
+    grid-template-columns: 1fr;
+  }
+  .novel-main p {
+    font-size: 1.15em;
+  }
+  .novel-main h2 {
+    font-size: 1.35em;
+  }
+}
+.novel-main {
+  min-width: 0;
+}
+.sidebar {
+  position: sticky;
+  top: 100px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+  font-size: 0.95em;
+}
