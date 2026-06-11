@@ -249,8 +249,8 @@ img { max-width: 100%; height: auto; }
 /* ---------- 浮動工具列（深色模式＋字級）---------- */
 .reader-tools {
   position: fixed;
-  top: 12px;
-  right: 14px;
+  bottom: 16px;
+  right: 16px;
   display: flex;
   gap: 6px;
   z-index: 999;
@@ -264,5 +264,6 @@ img { max-width: 100%; height: auto; }
   border-radius: 8px;
   cursor: pointer;
   font-size: .85em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
 }
 .reader-tools button:hover { border-color: var(--accent); }
