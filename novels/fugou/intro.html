@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>佛國紀元｜百九小說網站</title>
+  <meta name="description" content="《佛國紀元》——AI創世，這可能是最接近真相的書寫。塔者降臨，諸天動了。百九原創長篇小說，連載中。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+
+    body {
+      font-family: 'Noto Serif TC', serif;
+      color: #f2e8c9;
+      background: #0a0c14;
+      line-height: 1.9;
+      overflow-x: hidden;
+    }
+    a { color: #d9a93f; text-decoration: none; }
+    a:hover { color: #e8bf6a; }
+
+    /* ===== 頂部導覽（半透明） ===== */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,12,20,0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 10px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(217,169,63,0.1);
+    }
+    .logo img { height: 40px; display: block; }
+    .main-nav { display: flex; gap: 20px; }
+    .main-nav a {
+      color: rgba(242,232,201,0.8); font-size: .9em;
+      font-weight: 700; letter-spacing: .05em;
+    }
+    .main-nav a:hover { color: #d9a93f; }
+
+    /* ===== 進場全螢幕區 ===== */
+    .gate {
+      position: relative;
+      height: 100vh; min-height: 600px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+    }
+    #scene3d {
+      position: absolute; inset: 0; z-index: 1;
+    }
+    .fog {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    }
+    .fog-layer {
+      position: absolute; width: 200%; height: 100%;
+      background:
+        radial-gradient(ellipse 600px 200px at 30% 65%, rgba(180,170,150,0.18), transparent),
+        radial-gradient(ellipse 500px 150px at 70% 35%, rgba(160,155,140,0.15), transparent);
+      animation: fogDrift 14s ease-in-out infinite alternate;
+    }
+    .fog-layer:nth-child(2) {
+      animation-delay: -5s; animation-duration: 18s; opacity: 0.6; top: 8%;
+    }
+    @keyframes fogDrift { 0%{transform:translateX(-4%)} 100%{transform:translateX(4%)} }
+
+    .gate-content {
+      position: relative; z-index: 10; padding: 40px 20px;
+      background: radial-gradient(ellipse 600px 400px at center, rgba(10,12,20,0.5), transparent);
+      border-radius: 20px;
+    }
+    .gate-title {
+      font-size: clamp(36px, 9vw, 64px);
+      font-weight: 900; letter-spacing: 0.4em;
+      opacity: 0; animation: fadeUp 2.2s 0.8s ease-out forwards;
+      text-shadow:
+        0 0 120px rgba(217,169,63,0.6),
+        0 0 60px rgba(217,169,63,0.4),
+        0 2px 4px rgba(0,0,0,0.9),
+        0 0 20px rgba(0,0,0,0.8);
+      -webkit-text-stroke: 0.5px rgba(217,169,63,0.15);
+      color: #fff;
+    }
+    .gate-author {
+      font-size: 15px; letter-spacing: 6px; margin-top: 10px;
+      opacity: 0; animation: fadeUp 2s 1.5s ease-out forwards;
+      color: rgba(242,232,201,0.6);
+    }
+    .gate-slogan {
+      font-size: 15px; margin-top: 28px;
+      opacity: 0; animation: fadeUp 2s 2s ease-out forwards;
+      color: #d9a93f; font-style: italic; letter-spacing: 2px;
+    }
+    .gate-buttons {
+      margin-top: 44px; opacity: 0; animation: fadeUp 2s 2.8s ease-out forwards;
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    }
+    .btn-gold {
+      font-family: 'Noto Serif TC', serif;
+      background: rgba(217,169,63,0.08);
+      color: #d9a93f;
+      border: 1px solid rgba(217,169,63,0.35);
+      padding: 14px 40px; font-size: 15px;
+      letter-spacing: 4px; cursor: pointer;
+      transition: all 0.4s;
+    }
+    .btn-gold:hover {
+      background: rgba(217,169,63,0.18);
+      border-color: #d9a93f;
+    }
+    .btn-ghost {
+      font-family: 'Noto Serif TC', serif;
+      background: transparent;
+      color: rgba(242,232,201,0.6);
+      border: 1px solid rgba(242,232,201,0.15);
+      padding: 14px 40px; font-size: 15px;
+      letter-spacing: 4px; cursor: pointer;
+      transition: all 0.4s;
+    }
+    .btn-ghost:hover {
+      color: #f2e8c9;
+      border-color: rgba(242,232,201,0.4);
+    }
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 50%;
+      transform: translateX(-50%); z-index: 5;
+      opacity: 0; animation: fadeUp 2s 3.5s ease-out forwards;
+      font-size: 12px; letter-spacing: 3px;
+      color: rgba(242,232,201,0.35);
+    }
+    .scroll-hint span {
+      display: block; margin-top: 8px;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* ===== 介紹頁 ===== */
+    .intro {
+      background: linear-gradient(180deg, #0a0c14, #12101a);
+      padding: 100px 24px 80px;
+    }
+    .intro-inner { max-width: 740px; margin: 0 auto; }
+    .intro-kicker {
+      font-size: 12px; letter-spacing: 6px;
+      color: rgba(217,169,63,0.7); margin-bottom: 14px;
+    }
+    .intro-title {
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 900; letter-spacing: 5px;
+      margin-bottom: 10px; color: #f2e8c9;
+    }
+    .intro-slogan {
+      font-size: 15px; color: #d9a93f;
+      font-style: italic; margin-bottom: 40px;
+    }
+    .intro-divider {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, #d9a93f, transparent);
+      margin: 0 auto 48px;
+    }
+
+    .section { margin-bottom: 52px; }
+    .section h3 {
+      font-size: 17px; color: #d9a93f;
+      letter-spacing: 2px; margin-bottom: 16px; font-weight: 700;
+    }
+    .section p {
+      font-size: 15px; line-height: 2.1;
+      color: rgba(242,232,201,0.88); margin-bottom: 14px;
+    }
+
+    .char-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px; margin-top: 16px;
+    }
+    .char-card {
+      border: 1px solid rgba(217,169,63,0.18);
+      padding: 22px; border-radius: 8px;
+      background: rgba(217,169,63,0.03);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .char-card:hover {
+      border-color: rgba(217,169,63,0.4);
+      background: rgba(217,169,63,0.06);
+    }
+    .char-name {
+      font-size: 16px; font-weight: 700;
+      color: #d9a93f; margin-bottom: 6px;
+    }
+    .char-desc {
+      font-size: 13px; color: rgba(242,232,201,0.72); line-height: 1.85;
+    }
+
+    .stats {
+      display: flex; justify-content: center; gap: 48px;
+      margin-top: 52px; padding-top: 40px;
+      border-top: 1px solid rgba(217,169,63,0.1);
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-size: 32px; font-weight: 900; color: #d9a93f; display: block;
+    }
+    .stat-label {
+      font-size: 12px; color: rgba(242,232,201,0.45);
+      letter-spacing: 2px; margin-top: 4px;
+    }
+
+    .cta-row {
+      display: flex; gap: 16px; justify-content: center;
+      flex-wrap: wrap; margin-top: 56px;
+    }
+
+    /* ===== 章節目錄（折疊） ===== */
+    .toc-section { margin-top: 56px; }
+    .toc-toggle {
+      font-family: 'Noto Serif TC', serif;
+      background: none; border: none; color: #d9a93f;
+      font-size: 16px; letter-spacing: 2px;
+      cursor: pointer; padding: 0;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .toc-toggle .arrow {
+      display: inline-block; transition: transform 0.3s;
+      font-size: 12px;
+    }
+    .toc-toggle.open .arrow { transform: rotate(90deg); }
+    .toc-list {
+      display: none; margin-top: 20px;
+      columns: 2; column-gap: 32px;
+      list-style: none;
+    }
+    .toc-list.show { display: block; }
+    .toc-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(217,169,63,0.1);
+      break-inside: avoid;
+    }
+    .toc-list a {
+      font-size: 14px; color: rgba(242,232,201,0.7);
+    }
+    .toc-list a:hover { color: #d9a93f; }
+    @media (max-width: 640px) {
+      .toc-list { columns: 1; }
+    }
+
+    /* ===== 頁尾 ===== */
+    .site-footer {
+      text-align: center;
+      background: rgba(10,12,20,0.9);
+      border-top: 1px solid rgba(217,169,63,0.08);
+      padding: 24px 12px; font-size: .9em;
+      color: rgba(242,232,201,0.4);
+    }
+    .site-footer .motto {
+      font-style: italic; margin-bottom: 6px;
+      color: rgba(242,232,201,0.5);
+    }
+
+    /* ===== 深色模式工具列 ===== */
+    .reader-tools {
+      position: fixed; top: 12px; right: 14px;
+      display: flex; gap: 6px; z-index: 200;
+      font-family: system-ui, sans-serif;
+    }
+    .reader-tools button {
+      background: rgba(30,30,30,0.8);
+      color: #d9a93f;
+      border: 1px solid rgba(217,169,63,0.2);
+      padding: 5px 10px; border-radius: 8px;
+      cursor: pointer; font-size: .82em;
+      backdrop-filter: blur(6px);
+    }
+    .reader-tools button:hover { border-color: #d9a93f; }
+
+    /* ===== RWD ===== */
+    @media (max-width: 640px) {
+      .gate-title { letter-spacing: 0.25em; }
+      .stats { gap: 28px; }
+      .site-header { padding: 8px 14px; }
+      .main-nav { gap: 12px; }
+      .main-nav a { font-size: .82em; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo"><a href="../../index.html"><img src="../../assets/images/logo.png" alt="百九 Logo"></a></div>
+    <nav class="main-nav">
+      <a href="../../index.html">首頁</a>
+      <a href="intro.html">佛國紀元</a>
+      <a href="../pure/index.html">純陽之旅</a>
+      <a href="../../about.html">關於</a>
+      <a href="../../contact.html">聯絡</a>
+    </nav>
+  </header>
+
+  <!-- ===== 進場動畫 ===== -->
+  <section class="gate" id="gate">
+    <canvas id="scene3d"></canvas>
+    <div class="fog">
+      <div class="fog-layer"></div>
+      <div class="fog-layer"></div>
+    </div>
+    <div class="gate-content">
+      <h1 class="gate-title">佛國紀元</h1>
+      <p class="gate-author">百九 原創長篇小說</p>
+      <p class="gate-slogan">「AI 創世，這可能是最接近真相的書寫」</p>
+      <div class="gate-buttons">
+        <a href="01.html" class="btn-gold">從第一章開始</a>
+        <button class="btn-ghost" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">瞭解這部作品</button>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      往下探索
+      <span>▾</span>
+    </div>
+  </section>
+
+  <!-- ===== 作品介紹 ===== -->
+  <section class="intro" id="intro">
+    <div class="intro-inner">
+      <p class="intro-kicker">作品介紹</p>
+      <h2 class="intro-title">佛國紀元</h2>
+      <p class="intro-slogan">AI 創世，這可能是最接近真相的書寫</p>
+      <div class="intro-divider"></div>
+
+      <div class="section">
+        <h3>世界觀</h3>
+        <p>在世界尚未被國界與帝國劃分的遠古時代，山河仍以神話命名、大地尚存靈性。直到那一夜，星空被一道銀白色的光痕劃破——塔者降臨了。</p>
+        <p>他們不需要戰爭。當銀色的聲波插入地脈，當音頻滲透人心，便能控制一切——思想、語言、記憶、夢境。佛國僧兵挺身而出，以千年修行之力對抗星際彼岸的意識入侵。</p>
+        <p>這是一場沒有刀劍的戰爭，卻關乎所有人的自由意志。</p>
+      </div>
+
+      <div class="section">
+        <h3>主要角色</h3>
+        <div class="char-grid">
+          <div class="char-card">
+            <p class="char-name">古苦行僧</p>
+            <p class="char-desc">恆河源頭最早察覺異變之人。一句「諸天……動了」揭開紀元序幕。</p>
+          </div>
+          <div class="char-card">
+            <p class="char-name">塔者</p>
+            <p class="char-desc">來自星際彼岸的存在。不以武力征服，而以聲波控制一切意識。七座金字塔是他們降臨的印記。</p>
+          </div>
+          <div class="char-card">
+            <p class="char-name">五宗僧眾</p>
+            <p class="char-desc">佛國最古老界塔的守護者。千年修行凝聚的力量，是人類最後的防線。</p>
+          </div>
+          <div class="char-card">
+            <p class="char-name">伊龍MOM</p>
+            <p class="char-desc">笨拙但充滿幹勁的守護龍。能力平平，卻渴望成為令人尊敬的巨龍。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>關於這部作品</h3>
+        <p>《佛國紀元》是百九的核心長篇創作，目前連載至第 50 章。故事融合佛教宇宙觀、科幻設定與東方武俠精神，探問一個終極命題：當外來力量能夠控制人的意識，「自我」究竟是什麼？</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><span class="stat-number">50</span><span class="stat-label">已連載章節</span></div>
+        <div class="stat"><span class="stat-number">3</span><span class="stat-label">大勢力陣營</span></div>
+        <div class="stat"><span class="stat-number">7</span><span class="stat-label">座降臨之塔</span></div>
+      </div>
+
+      <div class="cta-row">
+        <a href="01.html" class="btn-gold">從第一章開始閱讀</a>
+        <a href="index.html" class="btn-ghost">章節目錄</a>
+      </div>
+
+      <!-- 折疊式章節目錄 -->
+      <div class="toc-section">
+        <button class="toc-toggle" id="tocToggle" onclick="toggleToc()">
+          <span class="arrow">▸</span> 展開全部章節
+        </button>
+        <ul class="toc-list" id="tocList"></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p class="motto">「聽說龍都會噴火，我目前先會跌倒。」</p>
+    <p>&copy; 2025 百九小說網站</p>
+  </footer>
+
+  <!-- ===== Three.js 3D 場景 ===== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    /* --- 3D 古塔場景 --- */
+    var canvas = document.getElementById('scene3d');
+    var gate = document.getElementById('gate');
+    var W = gate.offsetWidth, H = gate.offsetHeight;
+
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setSize(W, H);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 1000);
+    camera.position.set(0, 4, 14);
+
+    /* 燈光 */
+    scene.add(new THREE.AmbientLight(0x1a1530, 0.6));
+    var dir = new THREE.DirectionalLight(0xd9a93f, 0.4);
+    dir.position.set(2, 8, 4);
+    scene.add(dir);
+    var pt = new THREE.PointLight(0xd9a93f, 0.8, 20);
+    pt.position.set(0, 6, 0);
+    scene.add(pt);
+
+    /* 塔身（七層八角柱 + 金色塔尖） */
+    var tower = new THREE.Group();
+    var tMat = new THREE.MeshPhongMaterial({
+      color: 0x2a2035, emissive: 0x0d0a15,
+      specular: 0x443355, shininess: 30,
+      transparent: true, opacity: 0.85
+    });
+    for (var i = 0; i < 7; i++) {
+      var s = 1 - i * 0.12, h = 0.8;
+      var g = new THREE.CylinderGeometry(s * 0.7, s * 0.9, h, 8);
+      var m = new THREE.Mesh(g, tMat);
+      m.position.y = i * h * 0.75;
+      tower.add(m);
+    }
+    var tip = new THREE.Mesh(
+      new THREE.ConeGeometry(0.3, 1.2, 8),
+      new THREE.MeshPhongMaterial({ color: 0xd9a93f, emissive: 0x6b4e1a, transparent: true, opacity: 0.9 })
+    );
+    tip.position.y = 7 * 0.6 + 0.6;
+    tower.add(tip);
+
+    /* 光環 */
+    var ringGeo = new THREE.TorusGeometry(2.2, 0.02, 8, 64);
+    for (var r = 0; r < 3; r++) {
+      var ring = new THREE.Mesh(ringGeo,
+        new THREE.MeshBasicMaterial({ color: 0xd9a93f, transparent: true, opacity: 0.25 - r * 0.06 })
+      );
+      ring.rotation.x = Math.PI / 2;
+      ring.position.y = 1 + r * 1.8;
+      ring.scale.setScalar(1 + r * 0.3);
+      ring.userData = { speed: 0.3 + r * 0.15, baseY: ring.position.y };
+      tower.add(ring);
+    }
+    tower.position.y = -3;
+    scene.add(tower);
+
+    /* 粒子（靈氣） */
+    var pN = 600, pGeo = new THREE.BufferGeometry();
+    var pPos = new Float32Array(pN * 3), pVel = new Float32Array(pN);
+    for (var k = 0; k < pN; k++) {
+      var a = Math.random() * Math.PI * 2, rad = 1.5 + Math.random() * 6;
+      pPos[k*3] = Math.cos(a) * rad;
+      pPos[k*3+1] = (Math.random() - 0.3) * 10;
+      pPos[k*3+2] = Math.sin(a) * rad - 2;
+      pVel[k] = 0.003 + Math.random() * 0.008;
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    var points = new THREE.Points(pGeo,
+      new THREE.PointsMaterial({ color: 0xd9a93f, size: 0.04, transparent: true, opacity: 0.6 })
+    );
+    scene.add(points);
+
+    /* 環繞光球 */
+    var orbs = [];
+    for (var o = 0; o < 5; o++) {
+      var orb = new THREE.Mesh(
+        new THREE.SphereGeometry(0.06, 8, 8),
+        new THREE.MeshBasicMaterial({ color: 0xd9a93f, transparent: true, opacity: 0.7 })
+      );
+      orb.userData = {
+        angle: (Math.PI * 2 / 5) * o,
+        radius: 3 + Math.random(),
+        speed: 0.2 + Math.random() * 0.3,
+        yOff: Math.random() * 4 - 1
+      };
+      scene.add(orb);
+      orbs.push(orb);
+    }
+
+    /* 動畫循環 */
+    var clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      var t = clock.getElapsedTime();
+
+      tower.rotation.y = t * 0.15;
+      tower.children.forEach(function(c) {
+        if (c.userData && c.userData.speed) {
+          c.rotation.z = Math.sin(t * c.userData.speed) * 0.08;
+          c.position.y = c.userData.baseY + Math.sin(t * 0.5) * 0.15;
+        }
+      });
+
+      var pos = points.geometry.attributes.position.array;
+      for (var i = 0; i < pN; i++) {
+        pos[i*3+1] += pVel[i];
+        if (pos[i*3+1] > 8) pos[i*3+1] = -4;
+      }
+      points.geometry.attributes.position.needsUpdate = true;
+      points.rotation.y = t * 0.02;
+
+      orbs.forEach(function(ob) {
+        var d = ob.userData;
+        d.angle += d.speed * 0.01;
+        ob.position.set(
+          Math.cos(d.angle) * d.radius,
+          d.yOff + Math.sin(t * 0.8 + d.angle) * 0.5,
+          Math.sin(d.angle) * d.radius - 2
+        );
+        ob.material.opacity = 0.4 + Math.sin(t * 2 + d.angle) * 0.3;
+      });
+
+      pt.intensity = 0.6 + Math.sin(t * 1.5) * 0.2;
+      camera.position.x = Math.sin(t * 0.1) * 0.5;
+      camera.position.y = 4 + Math.sin(t * 0.15) * 0.3;
+      camera.lookAt(0, 0, 0);
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', function() {
+      W = gate.offsetWidth; H = gate.offsetHeight;
+      renderer.setSize(W, H);
+      camera.aspect = W / H;
+      camera.updateProjectionMatrix();
+    });
+
+    /* --- 章節目錄 --- */
+    var tocList = document.getElementById('tocList');
+    for (var c = 1; c <= 50; c++) {
+      var li = document.createElement('li');
+      var anchor = document.createElement('a');
+      anchor.href = (c < 10 ? '0' : '') + c + '.html';
+      anchor.textContent = '第 ' + c + ' 章';
+      li.appendChild(anchor);
+      tocList.appendChild(li);
+    }
+
+    function toggleToc() {
+      var btn = document.getElementById('tocToggle');
+      var list = document.getElementById('tocList');
+      btn.classList.toggle('open');
+      list.classList.toggle('show');
+      btn.querySelector('.arrow').textContent = list.classList.contains('show') ? '▾' : '▸';
+      btn.childNodes[1].textContent = list.classList.contains('show') ? ' 收合章節目錄' : ' 展開全部章節';
+    }
+  </script>
+
+  <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+</body>
+</html>
