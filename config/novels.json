@@ -1,23 +1,12 @@
 {
   "fugou": {
     "title": "佛國紀元",
-    "chapters": [
-      {
-        "title": "第一章 心塔之聲",
-        "path": "fugou/01.html"
-      }
-      // 可以繼續新增
-    ]
+    "folder": "fugou",
+    "chapters": 50
   },
-  "chunyang": {
+  "pure": {
     "title": "純陽之旅",
-    "chapters": [
-      {
-        "title": "第一章 不眠者",
-        "path": "chunyang/01.html"
-      }
-      // 可以繼續新增
-    ]
+    "folder": "pure",
+    "chapters": 10
   }
 }
-

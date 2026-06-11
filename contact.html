@@ -1,19 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>聯絡 - 百九小說網站</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>聯絡｜百九小說網站</title>
+  <meta name="description" content="與百九聯絡：合作邀約與讀者來信。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <header class="site-header">
-    <div class="logo">
-      <a href="index.html"><img src="assets/images/logo.png" alt="Logo" /></a>
-    </div>
+    <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="百九 Logo"></a></div>
     <nav class="main-nav">
       <a href="index.html">首頁</a>
+      <a href="novels/fugou/index.html">佛國紀元</a>
+      <a href="novels/pure/index.html">純陽之旅</a>
       <a href="about.html">關於</a>
       <a href="contact.html">聯絡</a>
     </nav>
@@ -21,25 +24,12 @@
   <main class="page-content">
     <h2>聯絡資訊</h2>
     <p>如有合作或讀者來信，歡迎寄信至：</p>
-    <p><strong>chunhower84121@gmail.com</strong></p>
+    <p><strong><a href="mailto:chunhower84121@gmail.com">chunhower84121@gmail.com</a></strong></p>
   </main>
   <footer class="site-footer">
+    <p class="motto">「聽說龍都會噴火，我目前先會跌倒。」</p>
     <p>&copy; 2025 百九小說網站</p>
   </footer>
-
-<script>
-  const toggle = document.createElement("button");
-  toggle.innerText = "🌗 切換模式";
-  toggle.className = "mode-toggle";
-  toggle.onclick = function() {
-    document.body.classList.toggle("dark-mode");
-    localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
-  };
-  document.body.appendChild(toggle);
-  if (localStorage.getItem("dark-mode") === "true") {
-    document.body.classList.add("dark-mode");
-  }
-</script>
-
+  <script src="assets/main.js"></script>
 </body>
 </html>

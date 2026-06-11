@@ -1,76 +1,65 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>百九小說網站</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>百九小說網站｜珍視之主</title>
+  <meta name="description" content="百九的小說發布空間：《佛國紀元》、《純陽之旅》連載中。以哲學、旅程與人性思辨為核心的故事，在這裡慢慢長大。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
   <header class="site-header">
-    <div class="logo">
-      <a href="index.html"><img src="assets/images/logo.png" alt="Logo" /></a>
-    </div>
+    <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="百九 Logo"></a></div>
     <nav class="main-nav">
       <a href="index.html">首頁</a>
+      <a href="novels/fugou/index.html">佛國紀元</a>
+      <a href="novels/pure/index.html">純陽之旅</a>
       <a href="about.html">關於</a>
       <a href="contact.html">聯絡</a>
     </nav>
   </header>
+
   <main class="home-content">
     <section class="hero-section">
-      <img class="hero-mom" src="assets/images/ilongmom.png" alt="伊龍MOM" />
+      <img class="hero-mom" src="assets/images/ilongmom.png" alt="伊龍MOM——本站的守護龍">
       <h1>百九小說網站</h1>
-      <p>這是一個讓故事慢慢長大的地方。</p>
-      <p>伊龍MOM是這個世界的守護龍，笨拙、努力，超級想成為一隻帥氣的龍。</p>
-      <div class="chapter-links">
-        <a href="novels/fugou/01.html">立刻開始閱讀</a>
+      <p class="tagline">這是一個讓故事慢慢長大的地方。</p>
+      <p class="tagline">伊龍MOM是這個世界的守護龍，笨拙、努力，超級想成為一隻帥氣的龍。</p>
+
+      <div class="novel-cards">
+        <a class="novel-card" href="novels/fugou/index.html">
+          <h3>📖 佛國紀元</h3>
+          <p>踏入眾神與僧兵的戰火世界。塔者降臨，諸天動了。</p>
+          <span class="cta">開始閱讀 →</span>
+        </a>
+        <a class="novel-card" href="novels/pure/index.html">
+          <h3>🌙 純陽之旅</h3>
+          <p>跟隨詩人與劍客踏上奇幻旅程。</p>
+          <span class="cta">開始閱讀 →</span>
+        </a>
       </div>
-    
-    <div style="margin-top: 20px; text-align: center;">
-      <p>你可以從以下作品展開旅程：</p>
-      <ul style="list-style: none; padding: 0; font-size: 1.1em;">
-        <li><a href="novels/fugou/01.html">📖 《佛國紀元》：踏入眾神與僧兵的戰火世界</a></li>
-        <li><a href="novels/pure/01.html">🌙 《純陽之旅》：跟隨詩人與劍客踏上奇幻旅程</a></li>
+    </section>
+
+    <section class="update-section">
+      <h2>📚 最新章節更新</h2>
+      <ul>
+        <li><a href="novels/fugou/50.html">佛國紀元 第50章</a></li>
+        <li><a href="novels/fugou/49.html">佛國紀元 第49章</a></li>
+        <li><a href="novels/fugou/48.html">佛國紀元 第48章</a></li>
+        <li><a href="novels/pure/10.html">純陽之旅 第10章</a></li>
+        <li><a href="novels/pure/09.html">純陽之旅 第9章</a></li>
+        <li><a href="novels/pure/08.html">純陽之旅 第8章</a></li>
       </ul>
-    </div>
-    
-</section>
-<section class="update-section">
-  <h2>📚 最新章節更新</h2>
-  <ul>
-    <li><a href="novels/fugou/50.html">佛國紀元 第50章</a></li>
-    <li><a href="novels/fugou/49.html">佛國紀元 第49章</a></li>
-    <li><a href="novels/fugou/48.html">佛國紀元 第48章</a></li>
-    <li><a href="novels/pure/10.html">純陽之旅 第10章</a></li>
-    <li><a href="novels/pure/9.html">純陽之旅 第9章</a></li>
-    <li><a href="novels/pure/8.html">純陽之旅 第8章</a></li>
-  </ul>
-
-    <div style="margin-top: 20px; text-align: center;">
-         
-</section>
-
+    </section>
   </main>
+
   <footer class="site-footer">
-    <p>聽說龍都會噴火，我目前先會跌倒。</p>
+    <p class="motto">「聽說龍都會噴火，我目前先會跌倒。」</p>
     <p>&copy; 2025 百九小說網站</p>
   </footer>
-
-<script>
-  const toggle = document.createElement("button");
-  toggle.innerText = "🌗 切換模式";
-  toggle.className = "mode-toggle";
-  toggle.onclick = function() {
-    document.body.classList.toggle("dark-mode");
-    localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
-  };
-  document.body.appendChild(toggle);
-  if (localStorage.getItem("dark-mode") === "true") {
-    document.body.classList.add("dark-mode");
-  }
-</script>
-
+  <script src="assets/main.js"></script>
 </body>
 </html>
